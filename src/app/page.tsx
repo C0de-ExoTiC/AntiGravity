@@ -133,7 +133,7 @@ export default function Home() {
                     transition={{ duration: 0.8 }}
                     className="text-4xl md:text-6xl lg:text-7xl font-bold text-center max-w-5xl mx-auto leading-tight bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 to-yellow-500"
                 >
-                    Wir bauen das digitale Rückgrat für Kusel. Schneller. Sicherer. Kompromisslos.
+                    Wir bauen das digitale Rückgrat für Ihren Erfolg. Schneller. Sicherer. Kompromisslos.
                 </motion.h2>
             </section>
 
@@ -181,7 +181,7 @@ export default function Home() {
                         alt="CXZ-IT Logo"
                         className="w-16 h-16 mx-auto object-contain"
                     />
-                    <p className="text-gray-400">© {new Date().getFullYear()} CXZ-IT Solutions. Designed in Waldmohr.</p>
+                    <p className="text-gray-400">© {new Date().getFullYear()} CXZ-IT Solutions.</p>
                     <p className="text-xs text-gray-600 max-w-2xl mx-auto leading-relaxed">
                         Ihr IT-Systemhaus für Kusel, Waldmohr, Kaiserslautern & Umgebung. Spezialisiert auf IT-Infrastruktur, Cloud-Lösungen, Videoüberwachung und PC-Notdienst.
                     </p>
