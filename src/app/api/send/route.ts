@@ -2,7 +2,16 @@ import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
-    // Initialize Resend inside the handler to avoid build-time errors
+    // Check if API key is configured
+    if (!process.env.RESEND_API_KEY) {
+        console.error('RESEND_API_KEY is not configured');
+        return NextResponse.json(
+            { error: 'E-Mail-Service nicht konfiguriert. Bitte kontaktieren Sie uns telefonisch.' },
+            { status: 500 }
+        );
+    }
+
+    // Initialize Resend inside the handler
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     try {
