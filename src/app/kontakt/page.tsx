@@ -4,6 +4,13 @@ import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Loader2 } from "lu
 import { useState, FormEvent } from "react";
 import Link from "next/link";
 
+// Google Ads gtag type declaration
+declare global {
+    interface Window {
+        gtag?: (...args: unknown[]) => void;
+    }
+}
+
 type FormStatus = "idle" | "loading" | "success" | "error";
 
 export default function Kontakt() {
@@ -36,6 +43,11 @@ export default function Kontakt() {
 
             setStatus("success");
             setFormData({ name: "", company: "", email: "", message: "" });
+
+            // Google Ads Conversion Tracking
+            if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+                window.gtag('event', 'conversion', { 'send_to': 'AW-16787386382/lRFPCKO--ewZEI7g7MQ-' });
+            }
         } catch (error) {
             setStatus("error");
             setErrorMessage(
