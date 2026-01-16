@@ -8,6 +8,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
     title: "CXZ-IT Solutions | AntiGravity",
     description: "Next Level IT für Kusel & Umgebung",
+    icons: {
+        icon: "/icon.png",
+        apple: "/icon.png",
+    },
 };
 
 export default function RootLayout({

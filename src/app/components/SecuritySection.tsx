@@ -13,7 +13,7 @@ const features = [
 
 export function SecuritySection() {
     return (
-        <section className="py-24 px-6 max-w-7xl mx-auto">
+        <section className="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                 {/* Left: Text & Features */}
@@ -28,10 +28,10 @@ export function SecuritySection() {
                         <span className="inline-block px-4 py-2 mb-6 text-sm font-mono tracking-widest text-yellow-400 border border-yellow-500/30 rounded-full bg-yellow-500/5">
                             FÜR PRIVAT & GEWERBE
                         </span>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6">
                             Sicherheit kennt <span className="text-yellow-400">keinen Unterschied.</span>
                         </h2>
-                        <p className="text-xl text-gray-400 leading-relaxed">
+                        <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
                             Ob Industriehalle oder Einfamilienhaus – wir installieren Profi-Technik, die funktioniert.
                         </p>
                     </div>
@@ -44,7 +44,7 @@ export function SecuritySection() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="flex items-center gap-4 text-lg"
+                                className="flex items-center gap-3 md:gap-4 text-base md:text-lg"
                             >
                                 <CheckCircle2 className="w-6 h-6 text-yellow-400 shrink-0" />
                                 <span className="text-gray-200">{feature}</span>
