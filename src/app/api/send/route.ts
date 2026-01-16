@@ -1,6 +1,16 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
+// Sanitize user input to prevent XSS in emails
+function escapeHtml(text: string): string {
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
 export async function POST(request: NextRequest) {
     // Check if API key is configured
     if (!process.env.RESEND_API_KEY) {
@@ -26,20 +36,35 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return NextResponse.json(
+                { error: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' },
+                { status: 400 }
+            );
+        }
+
+        // Sanitize inputs for HTML email
+        const safeName = escapeHtml(name);
+        const safeCompany = escapeHtml(company || 'Nicht angegeben');
+        const safeEmail = escapeHtml(email);
+        const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
+
         // Send email via Resend
         const { data, error } = await resend.emails.send({
             from: 'CXZ-IT Kontaktformular <onboarding@resend.dev>',
             to: ['kontakt@cxz-it.de'],
             replyTo: email,
-            subject: `Neue Anfrage von ${name}${company ? ` (${company})` : ''}`,
+            subject: `Neue Anfrage von ${safeName}${company ? ` (${safeCompany})` : ''}`,
             html: `
                 <h2>Neue Kontaktanfrage über die Website</h2>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Firma:</strong> ${company || 'Nicht angegeben'}</p>
-                <p><strong>E-Mail:</strong> <a href="mailto:${email}">${email}</a></p>
+                <p><strong>Name:</strong> ${safeName}</p>
+                <p><strong>Firma:</strong> ${safeCompany}</p>
+                <p><strong>E-Mail:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
                 <hr />
                 <h3>Nachricht:</h3>
-                <p>${message.replace(/\n/g, '<br>')}</p>
+                <p>${safeMessage}</p>
             `,
         });
 
