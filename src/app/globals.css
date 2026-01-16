@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --gold-primary: #FFD700;
+  --gold-secondary: #FFC107;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  overflow-x: hidden;
+}
+
+/* TEXT GLOW - For cinematic headlines */
+.text-glow {
+  text-shadow: 0 0 40px rgba(255, 215, 0, 0.4), 0 0 80px rgba(255, 215, 0, 0.2);
+}
+
+/* IMAGE MASK - Fades image to black at the bottom */
+.image-mask {
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+/* GLASS PANEL - For overlay text areas */
+.glass-panel {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* BENTO CARD - Image card with text overlay */
+.bento-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: #111;
+}
+
+.bento-card img {
+  transition: transform 0.7s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.bento-card:hover img {
+  transform: scale(1.05);
+}
+
+.bento-card .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+}
+
+/* --- APPLE STYLE BUTTONS (BLACK & GOLD) --- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--gold-primary);
+  color: black;
+  font-weight: 700;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: white;
+  font-weight: 700;
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.5);
+  transform: scale(1.05);
+}
