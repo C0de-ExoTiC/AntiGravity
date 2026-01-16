@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "./components/Navbar";
 
@@ -63,9 +65,25 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="de" className="dark">
+            <head>
+                {/* Google Ads Conversion Tracking */}
+                <Script
+                    src="https://www.googletagmanager.com/gtag/js?id=AW-16787386382"
+                    strategy="afterInteractive"
+                />
+                <Script id="google-ads" strategy="afterInteractive">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'AW-16787386382');
+                    `}
+                </Script>
+            </head>
             <body className={`${inter.className} bg-black text-white selection:bg-yellow-500/30`}>
                 <Navbar />
                 {children}
+                <SpeedInsights />
             </body>
         </html>
     );
