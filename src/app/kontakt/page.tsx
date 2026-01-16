@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { useState, FormEvent } from "react";
+import Link from "next/link";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -183,7 +184,7 @@ export default function Kontakt() {
                                 )}
                             </button>
                             <p className="text-xs text-gray-500 text-center">
-                                Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.
+                                Mit dem Absenden stimmen Sie unserer <Link href="/datenschutz" className="text-yellow-400 hover:text-yellow-300 underline">Datenschutzerklärung</Link> zu.
                             </p>
                         </form>
                     )}

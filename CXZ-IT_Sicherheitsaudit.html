@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sicherheitsaudit CXZ-IT Website</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .header {
+            border-bottom: 3px solid #FFD700;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 28px;
+            color: #1a1a1a;
+        }
+        .header .meta {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFD700;
+            background: #1a1a1a;
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        h2 {
+            font-size: 20px;
+            color: #1a1a1a;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+        .status-ok {
+            color: #22c55e;
+            font-weight: bold;
+        }
+        .status-ok::before {
+            content: "✓ ";
+        }
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 13px;
+        }
+        pre {
+            background: #1a1a1a;
+            color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 13px;
+            margin: 15px 0;
+        }
+        .recommendation {
+            background: #fffbeb;
+            border-left: 4px solid #FFD700;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .recommendation h4 {
+            margin-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+        }
+        @media print {
+            body { padding: 20px; }
+            .header { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">CXZ-IT</div>
+        <h1>Sicherheitsaudit Website</h1>
+        <div class="meta">Erstellt am: 16. Januar 2026 | Domain: cxz-it.de</div>
+    </div>
+
+    <h2>Zusammenfassung</h2>
+    <table>
+        <tr><th>Bereich</th><th>Status</th><th>Details</th></tr>
+        <tr><td>NPM-Pakete</td><td class="status-ok">Sicher</td><td>0 Schwachstellen</td></tr>
+        <tr><td>API-Keys</td><td class="status-ok">Geschützt</td><td>In Vercel Env Vars</td></tr>
+        <tr><td>Security Headers</td><td class="status-ok">Aktiv</td><td>XSS, Clickjacking-Schutz</td></tr>
+        <tr><td>Input-Validierung</td><td class="status-ok">Implementiert</td><td>HTML-Sanitizing</td></tr>
+        <tr><td>GitHub</td><td class="status-ok">Sicher</td><td>.env in .gitignore</td></tr>
+    </table>
+
+    <h2>Security Headers</h2>
+    <pre>X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=()</pre>
+
+    <h2>Empfehlungen</h2>
+    <div class="recommendation">
+        <ol>
+            <li><strong>GitHub 2FA aktivieren</strong></li>
+            <li><strong>Vercel 2FA aktivieren</strong></li>
+            <li><strong>API-Keys alle 6 Monate rotieren</strong></li>
+        </ol>
+    </div>
+
+    <h2>Fazit</h2>
+    <p>Die Website ist <strong>gut abgesichert</strong>. Die wichtigsten Risiken (XSS, Clickjacking, API-Key-Leaks) sind adressiert.</p>
+
+    <div class="footer">
+        <p>CXZ-IT Solutions | Sicherheitsaudit 16.01.2026</p>
+    </div>
+</body>
+</html>
