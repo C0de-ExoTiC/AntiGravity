@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
 
         // Send email via Resend
         const { data, error } = await resend.emails.send({
-            from: 'CXZ-IT Kontaktformular <onboarding@resend.dev>',
+            from: 'CXZ-IT Kontaktformular <kontakt@cxz-it.de>',
             to: ['kontakt@cxz-it.de'],
             replyTo: email,
             subject: `Neue Anfrage von ${safeName}${company ? ` (${safeCompany})` : ''}`,
