@@ -11,6 +11,7 @@ const links = [
     { path: "/", label: "Home" },
     { path: "/leistungen", label: "Leistungen" },
     { path: "/kontakt", label: "Kontakt" },
+    { path: "/news", label: "News" },
     { path: "/impressum", label: "Impressum" },
 ];
 
